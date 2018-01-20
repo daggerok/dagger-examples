@@ -1,0 +1,7 @@
+= dagger-examples image:https://travis-ci.org/daggerok/dagger-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/dagger-examples"]
+
+//tag::content[]
+
+This repository contains dagger dependency injection examples.
+
+//end::content[]

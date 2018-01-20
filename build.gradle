@@ -1,0 +1,63 @@
+buildscript {
+  ext {
+    kotlinVersion = "1.2.20"
+  }
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+  }
+}
+
+plugins {
+  id "idea"
+  id "eclipse"
+}
+
+allprojects {
+
+  apply plugin: "base"
+  apply plugin: "maven"
+
+  group = "daggerok"
+  version = "0.0.1"
+
+  defaultTasks "clean", "build"
+}
+
+subprojects {
+
+  apply plugin: "java"
+  apply plugin: "kotlin"
+
+  targetCompatibility = sourceCompatibility = JavaVersion.VERSION_1_8
+
+  tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+  }
+
+  compileKotlin {
+    kotlinOptions.jvmTarget = targetCompatibility
+  }
+
+  compileTestKotlin {
+    kotlinOptions.jvmTarget = targetCompatibility
+  }
+
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+
+  dependencies {
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
+    compile("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
+  }
+
+  task wrapper(type: Wrapper) {
+    gradleVersion = "4.4.1"
+    distributionType = "ALL"
+  }
+}

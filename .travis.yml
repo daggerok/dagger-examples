@@ -1,0 +1,28 @@
+#sudo: required
+group: travis_lts
+
+env:
+  global:
+    TERM=dumb
+
+language: java
+jdk:
+- openjdk8
+- oraclejdk8
+
+install: true
+#before_install:
+#- source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+# kill whatever ports is running
+#- stop_any 5432 5672 27017 8080
+
+script:
+- bash gradlew
+- java -jar hello-dagger/build/libs/*.jar
+- bash mvnw
+- java -jar hello-dagger/target/*.jar
+
+cache:
+  directories:
+  - $HOME/.m2
+  - $HOME/.gradle

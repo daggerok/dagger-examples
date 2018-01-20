@@ -1,0 +1,3 @@
+rootProject.name = "dagger-examples"
+include ":hello-dagger"
+project(":hello-dagger").projectDir = "$rootDir/hello-dagger" as File
