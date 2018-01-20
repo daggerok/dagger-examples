@@ -4,4 +4,22 @@
 
 This repository contains dagger dependency injection examples.
 
+=== idea install
+
+. link:https://github.com/square/dagger-intellij-plugin/blob/master/dagger-intellij-plugin.jar[download plugin]
+. `Command + ,` -> plugins -> Install plugin from disk
+
+import as maven (gradle not recognized Dagger annotation processed classes, such as DaggerApp_AppComponent)
+
+.build and test
+----
+# gradle
+bash ./gradlew
+java -jar hello-dagger/build/libs/*.jar
+
+# maven
+bash ./mvnw
+java -jar hello-dagger/target/*.jar
+----
+
 //end::content[]
